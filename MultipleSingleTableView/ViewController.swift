@@ -11,16 +11,18 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var table1: UITableView!
     @IBOutlet weak var table2: UITableView!
+    
+    
     let teams : [String] = ["Hamid", "Hridoy", "Kader"]
     
     let Hamidfriends : [String] = ["Uzzal","Zahid","Piyal"]
-    let HridoyFriends : [String] = ["Uzzal","Zahid","Piyal"]
-    let KaderFriends : [String] = ["Uzzal","Zahid","Piyal"]
+    let HridoyFriends : [String] = ["Uzzal","Zahid","Piyal","Emon"]
+    let KaderFriends : [String] = ["Uzzal","Zahid","Piyal","Ibrahim"]
     
     
     var teamsReference : String = "Hamid"
     
-    let cellIdentifier : String = "cell "
+    let cellIdentifier : String = "cell"
     
     var numberOfTeams : Int = 0
     var numberOfFriends : Int = 0
@@ -32,10 +34,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         table1.delegate = self
-        table2.delegate = self
+        //table2.delegate = self
         
         table1.dataSource = self
-        table2.dataSource = self
+        //table2.dataSource = self
         
         
         
@@ -43,12 +45,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         
-      // var myDictionary = ["A" :  ["Cat","Dog"],
-      //  "B" : ["Bird","Fly"],
-       // "C" : ["Lion","Danger"],
-       // "D" : ["Aplle","Testy"],
-      //  "E" : ["Mango","Deliciois"],]
-       // print(myDictionary)
+       var myDictionary = ["A" :  ["Cat","Dog"],
+        "B" : ["Bird","Fly"],
+        "C" : ["Lion","Danger"],
+        "D" : ["Aplle","Testy"],
+        "E" : ["Mango","Deliciois"],]
+        print(myDictionary)
         super.viewDidLoad()
         
     }
@@ -56,12 +58,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if (tableView.tag == 1)
         {
             numberOfTeams = teams.count
                 return numberOfTeams
         }
-        else (tableView.tag == 2)
+        else if (tableView.tag == 2)
         {
             if (teamsReference == "Hamid")
             {
@@ -80,16 +83,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         else
-            {
-            return 0
-           }
-        
+        {
+       
+        return 0
+        }
         
     }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as
+            
         UITableViewCell
         
         
@@ -122,6 +128,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
+        if (tableView.tag == 1)
+        {
+            teamsReference = teams[indexPath.row]
+        }
+        table2.reloadData()
     }
 }
 
