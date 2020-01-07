@@ -13,7 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var table2: UITableView!
     
     
-    let teams : [String] = ["Hamid", "Hridoy", "Kader"]
+    let teams : [String] = ["A", "B", "C","D", "E"]
     
     let Hamidfriends : [String] = ["Uzzal","Zahid","Piyal"]
     let HridoyFriends : [String] = ["Uzzal","Zahid","Piyal","Emon"]
